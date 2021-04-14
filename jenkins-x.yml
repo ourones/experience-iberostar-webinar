@@ -1,0 +1,221 @@
+buildPack: docker-helm
+pipelineConfig:
+  agent:
+    image: maven
+    label: jenkins-maven
+  pipelines:
+#    overrides:
+#    - pipeline: release
+#      stage: build
+#      steps:
+#      - sh: export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml
+#      - sh: jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)
+#      type: replace
+    post: {}
+    pullRequest:
+      pipeline:
+        options:
+          containerOptions:
+            env:
+            - name: DOCKER_CONFIG
+              value: /home/jenkins/.docker/
+            - name: DOCKER_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: docker.registry
+                  name: jenkins-x-docker-registry
+            - name: GIT_AUTHOR_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_AUTHOR_NAME
+              value: jenkins-x-bot
+            - name: GIT_COMMITTER_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_COMMITTER_NAME
+              value: jenkins-x-bot
+            - name: JENKINS_URL
+              value: http://jenkins:8080
+            - name: MAVEN_OPTS
+              value: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+            - name: XDG_CONFIG_HOME
+              value: /home/jenkins
+            - name: _JAVA_OPTIONS
+              value: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms10m -Xmx192m
+            name: ""
+            resources:
+              limits:
+                cpu: "1"
+                memory: 1Gi
+              requests:
+                cpu: 400m
+                memory: 512Mi
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - mountPath: /home/jenkins
+              name: workspace-volume
+            - mountPath: /var/run/docker.sock
+              name: docker-daemon
+            - mountPath: /root/.m2/
+              name: volume-0
+            - mountPath: /home/jenkins/.docker
+              name: volume-1
+            - mountPath: /home/jenkins/.gnupg
+              name: volume-2
+          volumes:
+          - emptyDir: {}
+            name: workspace-volume
+          - hostPath:
+              path: /var/run/docker.sock
+            name: docker-daemon
+          - name: volume-0
+            secret:
+              secretName: jenkins-maven-settings
+          - name: volume-1
+            secret:
+              secretName: jenkins-docker-cfg
+          - name: volume-2
+            secret:
+              secretName: jenkins-release-gpg
+        stages:
+        - agent:
+            image: maven
+          dir: /workspace/source
+          name: from-build-pack
+          steps:
+          - command: skaffold version
+            dir: /workspace/source
+            image: maven
+            name: build-skaffold-version
+          - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=956185452421.dkr.ecr.eu-west-1.amazonaws.com/deploy-snippet/front-snippet-prueba:${inputs.params.version} --cache-repo=956185452421.dkr.ecr.eu-west-1.amazonaws.com/todo/cache --skip-tls-verify-registry=956185452421.dkr.ecr.eu-west-1.amazonaws.com
+            dir: /workspace/source
+            image: gcr.io/kaniko-project/executor:v0.22.0
+            name: build-container-build
+          - command: jx step helm build
+            dir: /workspace/source/charts/$REPO_NAME
+            image: maven
+            name: build-helm-build
+    release:
+      pipeline:
+        options:
+          containerOptions:
+            env:
+            - name: DOCKER_CONFIG
+              value: /home/jenkins/.docker/
+            - name: DOCKER_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: docker.registry
+                  name: jenkins-x-docker-registry
+            - name: GIT_AUTHOR_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_AUTHOR_NAME
+              value: jenkins-x-bot
+            - name: GIT_COMMITTER_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_COMMITTER_NAME
+              value: jenkins-x-bot
+            - name: JENKINS_URL
+              value: http://jenkins:8080
+            - name: MAVEN_OPTS
+              value: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+            - name: XDG_CONFIG_HOME
+              value: /home/jenkins
+            - name: _JAVA_OPTIONS
+              value: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Xms10m -Xmx192m
+            name: ""
+            resources:
+              limits:
+                cpu: "1"
+                memory: 1Gi
+              requests:
+                cpu: 400m
+                memory: 512Mi
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - mountPath: /home/jenkins
+              name: workspace-volume
+            - mountPath: /var/run/docker.sock
+              name: docker-daemon
+            - mountPath: /root/.m2/
+              name: volume-0
+            - mountPath: /home/jenkins/.docker
+              name: volume-1
+            - mountPath: /home/jenkins/.gnupg
+              name: volume-2
+            - name: efs-eg-storage-internal
+              mountPath: /media
+          volumes:
+          - emptyDir: {}
+            name: workspace-volume
+          - hostPath:
+              path: /var/run/docker.sock
+            name: docker-daemon
+          - name: volume-0
+            secret:
+              secretName: jenkins-maven-settings
+          - name: volume-1
+            secret:
+              secretName: jenkins-docker-cfg
+          - name: volume-2
+            secret:
+              secretName: jenkins-release-gpg
+          - name: efs-eg-storage-internal
+            nfs:
+             server: eg-storage.internal
+             path: /media
+        stages:
+        - agent:
+            image: maven
+          dir: /workspace/source
+          name: from-build-pack
+          steps:
+          - command: jx step git credentials
+            dir: /workspace/source
+            image: maven
+            name: setup-jx-git-credentials
+          - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=956185452421.dkr.ecr.eu-west-1.amazonaws.com/snippetdev/$REPO_NAME:${inputs.params.version} --cache-repo=956185452421.dkr.ecr.eu-west-1.amazonaws.com/todo/cache --skip-tls-verify-registry=956185452421.dkr.ecr.eu-west-1.amazonaws.com
+            dir: /workspace/source
+            image: gcr.io/kaniko-project/executor:v0.22.0
+            name: build-step3
+          - sh: |
+              echo $REPO_NAME \
+              && mkdir -p /media/front-src-experience \
+              && cp -R css /media/front-src-experience/$REPO_NAME \
+              && cp -R dist /media/front-src-experience/$REPO_NAME \
+              && cp -R fonts /media/front-src-experience/$REPO_NAME \
+              && cp -R img /media/front-src-experience/$REPO_NAME \
+              && cp -R js /media/front-src-experience/$REPO_NAME \
+              && cp -R sass /media/front-src-experience/$REPO_NAME \
+              && cp -R gulpfile.js /media/front-src-experience/$REPO_NAME \
+              && cp -R index.html /media/front-src-experience/$REPO_NAME \
+              && cp -R package.json /media/front-src-experience/$REPO_NAME
+            dir: /workspace/source
+            image: maven
+            name: build-step-copy-experience
+          - sh: mkdir -p /media/front-nginx-sites-enabled && cp $REPO_NAME.conf /media/front-nginx-sites-enabled
+            dir: /workspace/source
+            image: maven
+            name: build-step-copy-front-nginx-sites-enabled
+#          - command: jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:${VERSION}
+#            dir: /workspace/source
+#            image: maven
+#            name: build-step5
+#          - command: jx step changelog --version v${VERSION}
+#            dir: /workspace/source/charts/experience-snippet-navidad-ivan
+#            image: maven
+#            name: promote-changelog
+#          - command: jx step helm release
+#            dir: /workspace/source/charts/experience.snippet.navidad.test
+#            image: maven
+#            name: promote-helm-release
+#          - command: jx promote -b --all-auto --timeout 1h --version ${VERSION}
+#            dir: /workspace/source/charts/front-snippet-prueba
+#            image: maven
+#            name: promote-jx-promote
+      setVersion:
+        steps:
+        - image: maven
+          steps:
+          - name: tag-with-new-version
+            sh: jx step next-version --use-git-tag-only --tag

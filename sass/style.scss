@@ -1,0 +1,257 @@
+/**
+    @author: Oliver Urones
+    @description: Hojº de estilos para iberia interno
+ */
+// Estilos comunes //
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: black;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  font-family: "Travel_Bold, Avenir_Roman, Neutra_Medium, Neutra_Light, Neutra_Titling Helvetica Neue 55";
+}
+
+span {
+  font-family: "Helvetica Neue 75";
+}
+
+video {
+  width: 100%;
+  height: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  boder: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.content {
+  position: relative;
+  width: 100vw;
+  /*padding-right: 15px;
+  padding-left: 15px;*/
+  margin-right: auto;
+  margin-left: auto;
+  height: 100vh;
+}
+
+.app, .app-content, .app-content-wrapper, .iberia-video {
+  position: relative;
+}
+
+.app {
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+}
+
+.overlay-play {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.playButton {
+  position: absolute;
+  opacity: 0.5;
+  width: 30em;
+  height: 30em;
+  top: 35%;
+  left: 42%;
+  /*z-index: 0;*/
+  z-index: 2;
+}
+
+.playButton:hover {
+  opacity: 1;
+}
+
+.overlay-spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+  z-index: 1;
+}
+
+.overlay-spinner > img {
+  width: 30em;
+  height: 30em;
+  left: 42.2%;
+  top: 35%;
+  position: absolute;
+}
+
+.overlay-form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  //z-index: 1;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+  color: #ffffff;
+}
+
+.overlay-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  //z-index: 1;
+  opacity: 1;
+  pointer-events: all;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.portraitScreen {
+  background-color: black;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  min-width: 100%;
+  text-align: center;
+  display: table-cell;
+  //background: rgb(0, 0, 0);
+  padding-top: 2vh;
+}
+
+#footerArrow {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 2000000;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footerArrow > img {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 10%;
+}
+
+// Clases que cambian el nombre según la campaña //
+.iberiaVideo-video {
+  width: 100%;
+  height: 100%;
+}
+
+.opacity-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: .9;
+  //z-index: 1;
+  background-color: #000000;
+}
+
+.overlay-end {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: table;
+}
+
+.end-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding-bottom: 6em;
+  line-height: 1.3;
+}
+
+.name {
+  font-family: "Montserrat-Bold";
+  font-size: 11em;
+  color: #c4d600;
+  opacity: 0;
+}
+
+.text {
+  font-family: "Montserrat-Medium";
+  font-size: 7.81em;
+  color: #505759;
+  opacity: 0;
+  padding: 0em 0em 2em;
+}
+
+.icon-content {
+  position: relative;
+  display: flex;
+  text-align: center;
+  width: 84.5%;
+  height: 8%;
+  margin: 0 auto;
+  top: 1em;
+}
+
+.icon {
+  position: relative;
+  margin: 0em 2em;
+  width: 30%;
+  cursor: pointer;
+}

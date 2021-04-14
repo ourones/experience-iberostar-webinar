@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Iberostar | Webinardd</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lib.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="dist/script.min.js"></script>
+    <script type="text/javascript" src="dist/lib.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-192253579-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-192253579-1');
+    </script>
+</head>
+<body ng-app="iberostar-webinar-app">
+    <div class="content" ng-controller="IberostarWebinarController" ng-init="init()" ng-cloak orientation-change-directive google-analytics-directive>
+        <div class="app" resize-change-directive>
+            <div class="app-content">
+                <div ng-show="showPlayButton" class="opacity-div"></div>
+                <div class="app-content-wrapper">
+                    <div class="video-app">
+                        <div ng-show="showPlayButton" class="overlay-play">
+                            <img class="playButton" ng-click="audioCtx.resume()" src="img/play.svg" play-button-directive />
+                        </div>
+                        <div ng-show="showSpinner" class="overlay-spinner" style="z-index: 2">
+                            <img src="https://s3-eu-west-1.amazonaws.com/snippet.staging/avoris/adventourous/fake_videos/loading-good.gif" alt="Cargando..." />
+                        </div>
+                        <div ng-show="showEnd" class="overlay-end">
+                            <div class="end-content">
+                                <p id="name" class="name">{{name}},</p>
+                                <p id="text" class="text">Es el momento de viajar juntos.</p>
+                                <div class="icon-content">
+                                    <a id="word2fly" class="icon" href="https://www.w2m.travel/" target="_blank"><div></div></a>
+                                    <a id="newblue" class="icon" href="https://www.w2m.travel/" target="_blank"><div></div></a>
+                                    <a id="icarion" class="icon" href="https://www.w2m.travel/" target="_blank"><div></div></a>
+                                    <a id="w2mpro" class="icon" href="https://www.w2m.travel/" target="_blank"><div></div></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iberia-video" ng-click="audioCtx.suspend()" style="z-index: 0">
+                            <video poster="img/preview.png" class="iberiaVideo-video" playsInLine src="{{videoUrl[actualResourceNumber]}}" generic-video-directive>
+
+                            </video>
+                            <!--El tag audio puede variar si la música va en front o incrustada en el vídeo-->
+                            <audio ng-if="isIE" loop src="img/audio/music.mp3" audio-directive>
+
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div ng-show="blockContent" class="portraitScreen">-->
+        <!--    <img src="img/rotate.gif" />-->
+        <!--    <p>Por favor, gire su teléfono para disfrutar de la experiencia</p>-->
+        <!--</div>-->
+        <div class="footer" ng-show="showLegal" ng-class="{'footer-background-color' : showLegal}" style="z-index: 2000000;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p class="legal-text">
+                    Utilizamos cookies propias y de terceros para mejorar nuestros servicios. Si continua navegando, consideramos que acepta su uso.
+                    <!--<a id="myLine" href="" target="_blank">Política de privacidad</a>-->
+                </p>
+            </div>
+        </div>
+        <div class="footer" ng-show="!showLegal">
+            <div id="footerArrow" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <img id="arrow" ng-click="viewLegal()" src="img/noun_up_ffffff.png"  />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
