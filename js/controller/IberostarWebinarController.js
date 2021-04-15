@@ -16,6 +16,7 @@ angular.module('iberostar-webinar-app')
         $scope.showLegal = true;
         $scope.actualResourceNumber = 0;
         $scope.showEnd = false;
+        alert("Prueba")
 
         /**
          * Función inicializadora
