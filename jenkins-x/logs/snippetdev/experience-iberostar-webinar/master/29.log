@@ -1,0 +1,35 @@
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1619102067.7707057,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-snippetdev-experience-iberostar-k4dd9-rm95p[0m
+{"level":"info","ts":1619102076.6809335,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/snippetdev/experience-iberostar-webinar.git @ v0.0.12 in path /workspace/source"}
+{"level":"warn","ts":1619102076.682953,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1619102076.7337167,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:8c15ea9d9ae910c56c98c131a9d183f01edb8181
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-step3[0m
+[36mINFO[0m[0001] Retrieving image manifest nginx:stable-alpine 
+[36mINFO[0m[0002] Retrieving image manifest nginx:stable-alpine 
+[36mINFO[0m[0002] Built cross stage deps: map[]                
+[36mINFO[0m[0002] Retrieving image manifest nginx:stable-alpine 
+[36mINFO[0m[0003] Retrieving image manifest nginx:stable-alpine 
+[36mINFO[0m[0004] Executing 0 build triggers                   
+[36mINFO[0m[0004] Skipping unpacking as no commands require it. 
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-step-copy-experience[0m
+experience-iberostar-webinar
+
+Showing logs for build [32msnippetdev-experience-iberostar-k4dd9-29[0m stage [32mfrom-build-pack[0m and container [32mstep-build-step-copy-front-nginx-sites-enabled[0m
