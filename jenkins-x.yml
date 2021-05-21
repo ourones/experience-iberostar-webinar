@@ -176,7 +176,7 @@ pipelineConfig:
             name: setup-jx-git-credentials
           - sh: npm install
             dir: /workspace/source
-            image: gcr.io/cloud-builders/npm:node-10.13.0
+            image: npm:node-10.13.0
             name: build-nodejs
           - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=956185452421.dkr.ecr.eu-west-1.amazonaws.com/snippetdev/$REPO_NAME:${inputs.params.version} --cache-repo=956185452421.dkr.ecr.eu-west-1.amazonaws.com/todo/cache --skip-tls-verify-registry=956185452421.dkr.ecr.eu-west-1.amazonaws.com
             dir: /workspace/source
