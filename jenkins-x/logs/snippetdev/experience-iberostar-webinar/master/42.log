@@ -1,0 +1,65 @@
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1621852516.3286498,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-snippetdev-experience-iberostar-t7vdc-bzr28[0m
+{"level":"info","ts":1621852525.7459543,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/snippetdev/experience-iberostar-webinar.git @ v0.0.38 in path /workspace/source"}
+{"level":"warn","ts":1621852525.7460418,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1621852525.7822978,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:ae807034818ca63131d946afd4987586f12ad5d4
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32msnippetdev-experience-iberostar-t7vdc-42[0m stage [32mfrom-build-pack[0m and container [32mstep-build-nodejs[0m
+Linux snippetdev-experience-iberostar-t7vdc-42-from-build-pack--9z8f8 4.14.231-173.361.amzn2.x86_64 #1 SMP Mon Apr 26 20:57:08 UTC 2021 x86_64 GNU/Linux
+Get:1 http://security.debian.org/debian-security stretch/updates InRelease [53.0 kB]
+Ign:2 http://deb.debian.org/debian stretch InRelease
+Get:3 http://deb.debian.org/debian stretch-updates InRelease [93.6 kB]
+Get:4 http://deb.debian.org/debian stretch Release [118 kB]
+Get:5 http://deb.debian.org/debian stretch Release.gpg [2410 B]
+Get:6 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [687 kB]
+Get:7 http://deb.debian.org/debian stretch/main amd64 Packages [7080 kB]
+Fetched 8033 kB in 1s (4216 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  adwaita-icon-theme at-spi2-core dconf-gsettings-backend dconf-service
+  glib-networking glib-networking-common glib-networking-services
+  gsettings-desktop-schemas libatk-bridge2.0-0 libatspi2.0-0 libcolord2
+  libdconf1 libdrm2 libegl1-mesa libepoxy0 libgbm1 libgtk-3-0 libgtk-3-bin
+  libgtk-3-common libjson-glib-1.0-0 libjson-glib-1.0-common libnotify4
+  libproxy1v5 librest-0.7-0 libsoup-gnome2.4-1 libsoup2.4-1 libwayland-client0
+  libwayland-cursor0 libwayland-egl1-mesa libwayland-server0 libx11-xcb1
+  libxcb-dri2-0 libxcb-dri3-0 libxcb-present0 libxcb-sync1 libxcb-xfixes0
+  libxkbcommon0 libxshmfence1 libxtst6 notification-daemon xkb-data
+Suggested packages:
+  colord gvfs
+The following NEW packages will be installed:
+  adwaita-icon-theme at-spi2-core dconf-gsettings-backend dconf-service
+  glib-networking glib-networking-common glib-networking-services
+  gsettings-desktop-schemas libatk-bridge2.0-0 libatspi2.0-0 libcolord2
+  libdconf1 libdrm2 libegl1-mesa libepoxy0 libgbm1 libgtk-3-0 libgtk-3-bin
+  libgtk-3-common libjson-glib-1.0-0 libjson-glib-1.0-common libnotify-bin
+  libnotify4 libproxy1v5 librest-0.7-0 libsoup-gnome2.4-1 libsoup2.4-1
+  libwayland-client0 libwayland-cursor0 libwayland-egl1-mesa
+  libwayland-server0 libx11-xcb1 libxcb-dri2-0 libxcb-dri3-0 libxcb-present0
+  libxcb-sync1 libxcb-xfixes0 libxkbcommon0 libxshmfence1 libxtst6
+  notification-daemon xkb-data
+0 upgraded, 42 newly installed, 0 to remove and 150 not upgraded.
+Need to get 21.5 MB of archives.
+After this operation, 81.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Abort.
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-nodejs'. The execution of the pipeline has stopped.[0m
