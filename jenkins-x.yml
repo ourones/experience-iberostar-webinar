@@ -177,7 +177,7 @@ pipelineConfig:
           - sh: |
               apt-get update -y \
               && apt-get install libnotify-bin -y \
-              && pm install \
+              && npm install \
               && npm install gulp-cli@2.1.0 -g \
               && npm install gulp \
               && npm install notify-send \
