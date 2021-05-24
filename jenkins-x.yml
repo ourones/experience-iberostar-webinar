@@ -176,6 +176,8 @@ pipelineConfig:
             name: setup-jx-git-credentials
           - sh: |
               npm install \
+              && npm install gulp-cli -g \
+              && npm install gulp \
               && gulp
             dir: /workspace/source
             image: node:10.13.0
