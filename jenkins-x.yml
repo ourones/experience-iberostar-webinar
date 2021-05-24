@@ -174,7 +174,7 @@ pipelineConfig:
             dir: /workspace/source
             image: maven
             name: setup-jx-git-credentials
-          - sh: npm install
+          - sh: npm install && gulp
             dir: /workspace/source
             image: node:10.13.0
             name: build-nodejs
@@ -194,8 +194,8 @@ pipelineConfig:
               && cp -R gulpfile.js /media/front-src-experience-pre/$REPO_NAME \
               && cp -R index.html /media/front-src-experience-pre/$REPO_NAME \
               && cp -R package.json /media/front-src-experience-pre/$REPO_NAME \
-              && cp -R node_modules /media/front-src-experience-pre/$REPO_NAME \
-              && cp -R package-lock.json /media/front-src-experience-pre/$REPO_NAME
+#              && cp -R node_modules /media/front-src-experience-pre/$REPO_NAME \
+#              && cp -R package-lock.json /media/front-src-experience-pre/$REPO_NAME
             dir: /workspace/source
             image: maven
             name: build-step-copy-experience
