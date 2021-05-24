@@ -175,9 +175,10 @@ pipelineConfig:
             image: maven
             name: setup-jx-git-credentials
           - sh: |
-              apt-get update \
-              apt-get install libnotify-bin \
-              npm install \
+              uname -a \
+              && apt-get update \
+              && apt-get install libnotify-bin \
+              && npm install \
               && npm install gulp-cli -g \
               && npm install gulp \
               && npm install notify-send \
