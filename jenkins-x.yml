@@ -194,7 +194,7 @@ pipelineConfig:
               && cp -R gulpfile.js /media/front-src-experience-pre/$REPO_NAME \
               && cp -R index.html /media/front-src-experience-pre/$REPO_NAME \
               && cp -R package.json /media/front-src-experience-pre/$REPO_NAME \
-              && cp -R node_module /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R node_modules /media/front-src-experience-pre/$REPO_NAME \
               && cp -R package-lock.json /media/front-src-experience-pre/$REPO_NAME
             dir: /workspace/source
             image: maven
