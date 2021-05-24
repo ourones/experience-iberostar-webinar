@@ -1,0 +1,26 @@
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1621854577.7692862,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mplace-tools[0m
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-snippetdev-experience-iber-n5gsx-8j8vh[0m
+{"level":"info","ts":1621854587.0812426,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/snippetdev/experience-iberostar-webinar.git @ ddabe6e570a57b25db49c80d3ebb5b8f9c5273f7 in path /workspace/source"}
+{"level":"warn","ts":1621854587.0813484,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1621854587.1207597,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:ddabe6e570a57b25db49c80d3ebb5b8f9c5273f7
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mstep-merge-pull-refs[0m
+SKIP merge-pull-refs: Nothing to merge
+
+Showing logs for build [32mmeta-snippetdev-experience-iber-n5gsx-46[0m stage [32mmeta-pipeline[0m and container [32mstep-create-effective-pipeline[0m
+error: failed to load project config in dir /workspace/source: failed to validate YAML file /workspace/source/jenkins-x.yml due to yaml: line 179: did not find expected key
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-create-effective-pipeline'. The execution of the pipeline has stopped.[0m
