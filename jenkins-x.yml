@@ -184,20 +184,20 @@ pipelineConfig:
             name: build-step3
           - sh: |
               echo $REPO_NAME \
-              && mkdir -p /media/front-src-experience \
-              && cp -R css /media/front-src-experience/$REPO_NAME \
-              && cp -R dist /media/front-src-experience/$REPO_NAME \
-              && cp -R fonts /media/front-src-experience/$REPO_NAME \
-              && cp -R img /media/front-src-experience/$REPO_NAME \
-              && cp -R js /media/front-src-experience/$REPO_NAME \
-              && cp -R sass /media/front-src-experience/$REPO_NAME \
-              && cp -R gulpfile.js /media/front-src-experience/$REPO_NAME \
-              && cp -R index.html /media/front-src-experience/$REPO_NAME \
-              && cp -R package.json /media/front-src-experience/$REPO_NAME
+              && mkdir -p /media/front-src-experience-pre \
+              && cp -R css /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R dist /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R fonts /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R img /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R js /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R sass /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R gulpfile.js /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R index.html /media/front-src-experience-pre/$REPO_NAME \
+              && cp -R package.json /media/front-src-experience-pre/$REPO_NAME
             dir: /workspace/source
             image: maven
             name: build-step-copy-experience
-          - sh: mkdir -p /media/front-nginx-sites-enabled && cp $REPO_NAME.conf /media/front-nginx-sites-enabled
+          - sh: mkdir -p /media/front-nginx-sites-enabled-pre && cp $REPO_NAME.conf /media/front-nginx-sites-enabled-pre
             dir: /workspace/source
             image: maven
             name: build-step-copy-front-nginx-sites-enabled
