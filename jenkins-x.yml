@@ -174,7 +174,9 @@ pipelineConfig:
             dir: /workspace/source
             image: maven
             name: setup-jx-git-credentials
-          - sh: npm install && gulp
+          - sh: |
+              npm install \
+              && gulp
             dir: /workspace/source
             image: node:10.13.0
             name: build-nodejs
