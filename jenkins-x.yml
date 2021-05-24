@@ -177,11 +177,13 @@ pipelineConfig:
           - sh: |
               apt-get update -y \
               && apt-get install libnotify-bin -y \
+              && apt-get install ruby-sass -y \
+              && gem install compass \
               && npm install \
               && npm install gulp-cli@2.1.0 -g \
               && npm install gulp \
               && npm install notify-send \
-              && npm install gulp-compass --save-dev \
+              && npm install gulp-compass  \
               && gulp -v \
               && gulp
             dir: /workspace/source
