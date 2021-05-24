@@ -178,6 +178,7 @@ pipelineConfig:
               npm install \
               && npm install gulp-cli -g \
               && npm install gulp \
+              && npm install gulp-compass --save-dev \
               && gulp
             dir: /workspace/source
             image: node:10.13.0
