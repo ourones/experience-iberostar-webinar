@@ -1,0 +1,43 @@
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1621850099.3057885,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-snippetdev-experience-iberostar-6l46r-8wdk5[0m
+{"level":"info","ts":1621850109.453718,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/snippetdev/experience-iberostar-webinar.git @ v0.0.26 in path /workspace/source"}
+{"level":"warn","ts":1621850109.4550135,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1621850109.5088186,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3ab356f64e9c3e8508f3f4dedc47178a95ff6bbc
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32msnippetdev-experience-iberostar-6l46r-36[0m stage [32mfrom-build-pack[0m and container [32mstep-build-nodejs[0m
+npm WARN deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated gulp-util@2.2.20: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+npm WARN deprecated graceful-fs@2.0.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated natives@1.1.6: This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x.
+npm WARN deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm WARN deprecated graceful-fs@1.2.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN your-project@1.0.0 No license field.
+
+added 558 packages from 311 contributors and audited 559 packages in 17.945s
+found 10 vulnerabilities (3 low, 7 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+/bin/sh: 1: gulp: not found
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-nodejs'. The execution of the pipeline has stopped.[0m
